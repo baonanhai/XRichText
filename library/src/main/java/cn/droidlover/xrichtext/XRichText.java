@@ -300,10 +300,6 @@ public class XRichText extends TextView implements ViewTreeObserver.OnGlobalLayo
             if (downLoader == null) {
                 downLoader = new BaseImageLoader(getContext());
             }
-
-            Runnable loadRunnable = new Runnable() {
-                @Override
-                public void run() {
                     try {
                         final Bitmap rawBmp = downLoader.getBitmap(holder.getSrc());
                         if (rawBmp != null) {
@@ -319,10 +315,6 @@ public class XRichText extends TextView implements ViewTreeObserver.OnGlobalLayo
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-                }
-            };
-            LoaderTask.getThreadPoolExecutor().execute(loadRunnable);
 
             return urlDrawable;
         }
